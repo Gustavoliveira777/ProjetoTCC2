@@ -20,7 +20,8 @@ import org.hibernate.annotations.Type;
 @Entity(name="atleta")
 @Proxy(lazy = false)
 public class Atleta implements Serializable {
-//hhh    
+
+    
  
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
