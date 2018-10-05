@@ -37,8 +37,6 @@
             if(up == null){
                 response.sendRedirect("login.jsp?e=Pagina de acesso restrito, entre primeiro");
             }else{
-                out.println(up.getNome());
-            }
         %>
 
         <!-- Navigation -->
@@ -62,7 +60,7 @@
                                 <a class="dropdown-item" href="portfolio-2-col.html">Atletas</a>
                                 <a class="dropdown-item" href="portfolio-3-col.html">Equipes</a>
                                 <a class="dropdown-item" href="portfolio-4-col.html"></a>
-                                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+                                <a class="dropdown-item" href="portfolio-item.html"></a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -70,7 +68,7 @@
                                 Olá,&nbsp;<%=up.getNome()%>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                <a class="dropdown-item" href="scripts/logar.jsp?c=1">Sair</a>
+                                <a class="dropdown-item" href="scripts/ctrlacesso.jsp?c=1">Sair</a>
                                 <a class="dropdown-item" href="editarPerfil.jsp?c=<%=up.getIdUsuario()%>">Editar Perfil</a>
                             </div>
                         </li>
@@ -86,22 +84,7 @@
 
         <!-- Page Content -->
         <div class="container">
-            <%
-                request.setCharacterEncoding("UTF-8");
-            if(request.getParameter("e") != null){
-                String erro = request.getParameter("e");
-            %>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong><%=erro%></strong> .
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <%
-            }
-            %>
-            <h1 class="my-4">Seja Bem-Vindo a Competiteca</h1>
+            <h1 class="my-4">Painel de Controle</h1>
 
             <!-- Marketing Icons Section -->
             <div class="row">
@@ -133,7 +116,9 @@
                 <!-- Bootstrap core JavaScript -->
                 <script src="vendor/jquery/jquery.min.js"></script>
                 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<%
+}
+%>
                 </body>
 
                 </html>
