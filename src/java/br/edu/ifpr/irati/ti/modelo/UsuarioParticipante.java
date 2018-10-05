@@ -23,6 +23,9 @@ public class UsuarioParticipante implements Serializable{
     @Column(name="email", nullable = false)
     private String email;
     
+    @Column(name="nome", nullable = false)
+    private String nome;
+    
     @Column(name="senha",nullable = false)
     private String senha;
     
@@ -34,9 +37,11 @@ public class UsuarioParticipante implements Serializable{
         email = "";
         senha = "";
         atletas = new ArrayList<>();
+        nome = "";
     }
 
-    public UsuarioParticipante(int idUsuario, String email, String senha) {
+    public UsuarioParticipante(int idUsuario,String nome, String email, String senha) {
+        this.nome = nome;
         this.idUsuario = idUsuario;
         this.email = email;
         this.senha = senha;
@@ -104,6 +109,20 @@ public class UsuarioParticipante implements Serializable{
      */
     public void setAtletas(List<Atleta> atletas) {
         this.atletas = atletas;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
     

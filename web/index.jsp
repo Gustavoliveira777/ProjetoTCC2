@@ -3,10 +3,8 @@
     Created on : 01/10/2018, 09:16:10
     Author     : Usuário
 --%>
-<%@page import="br.edu.ifpr.irati.ti.dao.Dao"%>
-<%@page import="br.edu.ifpr.irati.ti.dao.GenericDAO"%>
-<%@page import="br.edu.ifpr.irati.ti.modelo.BuscaMethods"%>
 <%@page import="br.edu.ifpr.irati.ti.modelo.Competicao"%>
+<%@page import="br.edu.ifpr.irati.ti.controle.CompeticaoControle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -23,8 +21,8 @@
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 
         <!-- Custom styles for this template -->
         <link href="css/modern-business.css" rel="stylesheet">
@@ -34,7 +32,7 @@
     <body>
 
         <!-- Navigation -->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-success fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="index.jsp">Competiteca</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +47,7 @@
                             <a class="nav-link" href="services.html"><i class="fas fa-trophy"></i>&nbsp;Competições</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
+                            <a class="nav-link" href="login.jsp"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -179,10 +177,9 @@
 
             <div class="row">
                 <%
-            Dao<Competicao> cpd = new GenericDAO<>(Competicao.class);
-           // List<Competicao>cpl = cpd.buscarTodos(Competicao.class);
-            /*for(Competicao competixon : cpd.buscarTodos(Competicao.class))*/
-            for(int i = 0; i <=10; i++){
+           CompeticaoControle cptcc = new CompeticaoControle();
+           //List<Competicao> cptcl = cptcc.buscarTodasCompeticoes();
+            for(Competicao cptc : cptcc.buscarTodasCompeticoes()){
                 %>
 
                 <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -190,7 +187,7 @@
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#"><%//competixon.getNome()%></a>
+                                <a href="#"><%=cptc.getNome()%></a>
                             </h4>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
                         </div>

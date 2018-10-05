@@ -29,28 +29,28 @@ public class ModalidadeColetiva implements Serializable {
     private List<Equipe> equipes;
      
     // FICAR DE OLHO
-    @OneToOne
-    private CompeticaoModalidadeColetiva competicaoModalidadeColetiva;
+    //@OneToOne
+    //private CompeticaoModalidadeColetiva competicaoModalidadeColetiva;
 
     public ModalidadeColetiva() {
         idModColetiva = 0;
         nome = "";
         equipes = new ArrayList<>();
-        competicaoModalidadeColetiva = new CompeticaoModalidadeColetiva();
+       // competicaoModalidadeColetiva = new CompeticaoModalidadeColetiva();
     }
 
     public ModalidadeColetiva(int idModColetiva, String nome) {
         this.idModColetiva = idModColetiva;
         this.nome = nome;
         this.equipes = new ArrayList<>();
-        competicaoModalidadeColetiva = new CompeticaoModalidadeColetiva();
+        //competicaoModalidadeColetiva = new CompeticaoModalidadeColetiva();
     }
 
     public ModalidadeColetiva(int idModColetiva, String nome, List<Equipe> equipes, CompeticaoModalidadeColetiva competicaoModalidadeColetiva) {
         this.idModColetiva = idModColetiva;
         this.nome = nome;
         this.equipes = equipes;
-        this.competicaoModalidadeColetiva = competicaoModalidadeColetiva;
+        //this.competicaoModalidadeColetiva = competicaoModalidadeColetiva;
     }
     
     
@@ -106,16 +106,16 @@ public class ModalidadeColetiva implements Serializable {
     /**
      * @return the competicaoModalidadeColetiva
      */
-    public CompeticaoModalidadeColetiva getCompeticaoModalidadeColetiva() {
+    /*public CompeticaoModalidadeColetiva getCompeticaoModalidadeColetiva() {
         return competicaoModalidadeColetiva;
-    }
+    }*/
 
     /**
      * @param competicaoModalidadeColetiva the competicaoModalidadeColetiva to set
      */
-    public void setCompeticaoModalidadeColetiva(CompeticaoModalidadeColetiva competicaoModalidadeColetiva) {
+    /*public void setCompeticaoModalidadeColetiva(CompeticaoModalidadeColetiva competicaoModalidadeColetiva) {
         this.competicaoModalidadeColetiva = competicaoModalidadeColetiva;
-    }
+    }*/
 
     
     

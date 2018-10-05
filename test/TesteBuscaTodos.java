@@ -2,8 +2,8 @@
 import br.edu.ifpr.irati.ti.dao.Dao;
 import br.edu.ifpr.irati.ti.dao.GenericDAO;
 import br.edu.ifpr.irati.ti.modelo.Competicao;
+import br.edu.ifpr.irati.ti.modelo.UsuarioParticipante;
 import java.util.Date;
-import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,10 +21,12 @@ public class TesteBuscaTodos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Dao<Competicao>cptc = new GenericDAO<>(Competicao.class);
-        //List<Competicao> competicoes = cptc.buscarTodos(Competicao.class);
-        Competicao mls = new Competicao(0, "MLB", new Date(), new Date());
-        cptc.salvar(mls);
+        Dao<UsuarioParticipante>cptc = new GenericDAO<>(UsuarioParticipante.class);
+        /*List<Competicao> competicoes = cptc.buscarTodos(Competicao.class);
+        Competicao mlb = competicoes.get(0);
+        System.out.println(mlb.getNome()+";"+mlb.getIdCompeticao());*/
+        UsuarioParticipante user = new UsuarioParticipante(0, "oliveiragustavo1340@gmail.com", "Curitiba320");
+        cptc.salvar(user);
     }
     
 }

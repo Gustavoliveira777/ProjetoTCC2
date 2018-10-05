@@ -29,30 +29,30 @@ public class ModalidadeSolo implements Serializable {
     private List<Atleta> atletas;
     
     // FICAR DE OLHO
-    @Transient
+    //@Transient
     //@OneToOne
-    private CompeticaoModalidadeSolo competicaoModalidadeSolo;
+    //private CompeticaoModalidadeSolo competicaoModalidadeSolo;
     
 
     public ModalidadeSolo() {
         idModalidadeSolo = 0;
         nome = "";
         atletas = new ArrayList<>();
-        competicaoModalidadeSolo = new CompeticaoModalidadeSolo();
+        //competicaoModalidadeSolo = new CompeticaoModalidadeSolo();
     }
 
     public ModalidadeSolo(int idModalidadeSolo, String nome) {
         this.idModalidadeSolo = idModalidadeSolo;
         this.nome = nome;
         this.atletas = new ArrayList<>();
-        this.competicaoModalidadeSolo = new CompeticaoModalidadeSolo();
+        //this.competicaoModalidadeSolo = new CompeticaoModalidadeSolo();
     }
 
-    public ModalidadeSolo(int idModalidadeSolo, String nome, List<Atleta> atletas, CompeticaoModalidadeSolo competicaoModalidadeSolo) {
+    public ModalidadeSolo(int idModalidadeSolo, String nome, List<Atleta> atletas/*, CompeticaoModalidadeSolo competicaoModalidadeSolo*/) {
         this.idModalidadeSolo = idModalidadeSolo;
         this.nome = nome;
         this.atletas = atletas;
-        this.competicaoModalidadeSolo = competicaoModalidadeSolo;
+        //this.competicaoModalidadeSolo = competicaoModalidadeSolo;
     }
     
     
@@ -111,16 +111,16 @@ public class ModalidadeSolo implements Serializable {
     /**
      * @return the competicaoModalidadeSolo
      */
-    public CompeticaoModalidadeSolo getCompeticaoModalidadeSolo() {
+   /* public CompeticaoModalidadeSolo getCompeticaoModalidadeSolo() {
         return competicaoModalidadeSolo;
-    }
+    }*/
 
     /**
      * @param competicaoModalidadeSolo the competicaoModalidadeSolo to set
      */
-    public void setCompeticaoModalidadeSolo(CompeticaoModalidadeSolo competicaoModalidadeSolo) {
+    /*public void setCompeticaoModalidadeSolo(CompeticaoModalidadeSolo competicaoModalidadeSolo) {
         this.competicaoModalidadeSolo = competicaoModalidadeSolo;
-    }
+    }*/
 
     
     
