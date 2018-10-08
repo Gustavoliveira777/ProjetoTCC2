@@ -4,9 +4,9 @@
     Created on : 01/10/2018, 09:16:10
     Author     : Usuário
 --%>
-<%@page import="br.edu.ifpr.irati.ti.modelo.Competicao"%>
+<%@page import="br.edu.ifpr.irati.ti.modelo.Local"%>
 <%@page import="br.edu.ifpr.irati.ti.modelo.UsuarioParticipante"%>
-<%@page import="br.edu.ifpr.irati.ti.controle.CompeticaoControle"%>
+<%@page import="br.edu.ifpr.irati.ti.controle.LocalControle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -37,6 +37,7 @@
             if(up == null){
                 response.sendRedirect("login.jsp?e=Pagina de acesso restrito, entre primeiro");
             }else{
+                
         %>
 
         <!-- Navigation -->
@@ -57,8 +58,8 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                 <a class="dropdown-item" href="competicoes.jsp">Competições</a>
-                                <a class="dropdown-item" href="atleta.jsp">Atletas</a>
-                                <a class="dropdown-item" href="equipes.jsp">Equipes</a>
+                                <a class="dropdown-item" href="portfolio-2-col.html">Atletas</a>
+                                <a class="dropdown-item" href="portfolio-3-col.html">Equipes</a>
                                 <a class="dropdown-item" href="local.jsp">Locais</a>
                                 <a class="dropdown-item" href="portfolio-item.html"></a>
                             </div>
@@ -69,10 +70,10 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                 <a class="dropdown-item" href="scripts/ctrlacesso.jsp?c=1">Sair</a>
-                                <a class="dropdown-item" href="editaUsuario.jsp?c=<%=up.getIdUsuario()%>">Editar Perfil</a>
+                                <a class="dropdown-item" href="editarPerfil.jsp?c=<%=up.getIdUsuario()%>">Editar Perfil</a>
                             </div>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -84,42 +85,41 @@
 
         <!-- Page Content -->
         <div class="container">
-            <h1 class="my-4">Painel de Controle</h1>
-
-            <!-- Marketing Icons Section -->
-            <div class="row">
-                <div class="col">
-                    <div class="card h-100">
-                        <h4 class="card-header">Entre</h4>
-                        <div class="card-body">
-                            <form action="scripts/ctrlacesso.jsp" method="POST" class="col">
-
-                                <label for="" class="col-md-12">
-                                    E-mail:
-                                    <input type="email" required class="form-control" name="email" placeholder="Informe seu e-mail">
-                                </label>
-                                <label for="" class="col-md-12">
-                                    Senha:
-                                    <input type="password" required class="form-control" name="senha" placeholder="Insira sua senha">
-                                </label>
-
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-success">Logar</button>
-
-                        </div>
-                        </form> 
-                    </div>
-                </div>
+            <h1 class="my-4">Criar um novo Local</h1>
 
 
-                <!-- Bootstrap core JavaScript -->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<%
-}
-%>
-                </body>
+            <form action="scripts/editarLocal.jsp" method="POST" class="col">
+                <input type="hidden" name="op" value="3">
+                <input type="hidden" name="id" value="0">
 
-                </html>
+                <label for="" class="col-md-12">
+                    Nome:
+                    <input type="text" required class="form-control" name="nome" placeholder="Informe o nome do local" >
+                </label>
+                <label for="" class="col-md-12">
+                    Endereco:
+                    <input type="text" required class="form-control" name="endereco" placeholder="Insira o endereço" >
+                </label>
+                <label for="" class="col-md-12">
+                    Cidade/Estado:
+                    <input type="text" required class="form-control" name="cidade" placeholder="Insira a cidade/estado">
+                </label>
+
+
+                <button type="submit" class="btn btn-success">Salvar</button>
+
+
+            </form> 
+        </div>
+
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <%
+        }
+        %>
+    </body>
+
+</html>
 

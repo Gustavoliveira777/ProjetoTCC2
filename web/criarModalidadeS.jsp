@@ -4,9 +4,9 @@
     Created on : 01/10/2018, 09:16:10
     Author     : Usuário
 --%>
-<%@page import="br.edu.ifpr.irati.ti.modelo.Competicao"%>
+<%@page import="br.edu.ifpr.irati.ti.modelo.Local"%>
 <%@page import="br.edu.ifpr.irati.ti.modelo.UsuarioParticipante"%>
-<%@page import="br.edu.ifpr.irati.ti.controle.CompeticaoControle"%>
+<%@page import="br.edu.ifpr.irati.ti.controle.LocalControle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -72,7 +72,7 @@
                                 <a class="dropdown-item" href="editaUsuario.jsp?c=<%=up.getIdUsuario()%>">Editar Perfil</a>
                             </div>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -84,42 +84,73 @@
 
         <!-- Page Content -->
         <div class="container">
-            <h1 class="my-4">Painel de Controle</h1>
 
-            <!-- Marketing Icons Section -->
+            <!-- Page Heading/Breadcrumbs -->
+            <h1 class="mt-4 mb-3">Gerenciar Atletas
+                <small>Adicionar Modalidade</small>
+
+            </h1><br>
+
+
+
+            <!-- Content Row -->
             <div class="row">
-                <div class="col">
-                    <div class="card h-100">
-                        <h4 class="card-header">Entre</h4>
-                        <div class="card-body">
-                            <form action="scripts/ctrlacesso.jsp" method="POST" class="col">
+                <!-- Sidebar Column -->
+                <div class="col-lg-3 mb-4">
+                    <div class="list-group">
+                        <a href="atleta.jsp" class="list-group-item">Gerenciar Atletas</a>
+                        <a href="criarModalidadeS.jsp" class="list-group-item active">Adicionar uma Modalidade</a>
 
-                                <label for="" class="col-md-12">
-                                    E-mail:
-                                    <input type="email" required class="form-control" name="email" placeholder="Informe seu e-mail">
-                                </label>
-                                <label for="" class="col-md-12">
-                                    Senha:
-                                    <input type="password" required class="form-control" name="senha" placeholder="Insira sua senha">
-                                </label>
-
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-success">Logar</button>
-
-                        </div>
-                        </form> 
                     </div>
                 </div>
+                <!-- Content Column -->
+                <div class="col-lg-9 mb-4">
+                    <%
+                request.setCharacterEncoding("UTF-8");
+            if(request.getParameter("msg") != null){
+                String mensagem = request.getParameter("msg");
+                String cor = request.getParameter("color");
+                    %>
+                    <div class="alert alert-<%=cor%> alert-dismissible fade show" role="alert">
+                        <strong><%=mensagem%></strong> .
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <%
+                    }
+                    %>
+                    <form action="scripts/editarModalidadeS.jsp" method="POST" class="col">
+                        <input type="hidden" name="op" value="1">
+                        <input type="hidden" name="id" value="0">
+
+                        <label for="" class="col-md-12">
+                            Nome:
+                            <input type="text" required class="form-control" name="nome" placeholder="Informe o nome da Modalidade">
+                        </label>
+                        <button type="submit" class="btn btn-success">
+                            <!-- Adicionar icone -->
+                            <i class="fas fa-plus"></i>&nbsp;Criar
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
 
 
-                <!-- Bootstrap core JavaScript -->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<%
-}
-%>
-                </body>
 
-                </html>
+
+        <!-- Bootstrap core JavaScript -->
+
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <%
+        }
+        %>
+    </body>
+
+</html>
 

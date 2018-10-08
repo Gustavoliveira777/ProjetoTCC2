@@ -25,7 +25,7 @@ public class ModalidadeColetiva implements Serializable {
     @Column(name="nome", nullable = false)
     private String nome;
     
-    @OneToMany (mappedBy = "modalidade")
+    @OneToMany //(mappedBy = "modalidade")
     private List<Equipe> equipes;
      
     // FICAR DE OLHO

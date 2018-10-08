@@ -29,10 +29,10 @@ public class Competicao implements Serializable {
     @Column (name = "nome", nullable = false, length = 100)
     private String nome;
     
-    @OneToMany (mappedBy = "competicao")
+    @OneToMany
     private List<Atleta> atletas;
     
-    @OneToMany (mappedBy = "competicao")
+    @OneToMany
     private List<Equipe> equipes;
         
     @OneToMany

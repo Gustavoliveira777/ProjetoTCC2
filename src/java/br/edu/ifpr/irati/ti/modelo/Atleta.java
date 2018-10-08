@@ -4,6 +4,7 @@ package br.edu.ifpr.irati.ti.modelo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,16 +37,14 @@ public class Atleta implements Serializable {
     @ManyToMany(mappedBy = "atletas", fetch=FetchType.EAGER)
     private List<Equipe> equipes;
     
-    @ManyToMany(mappedBy = "atletas" , fetch=FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.EAGER)
     private List<ModalidadeSolo> modalidadesSolo;
     
-    @ManyToOne
-    @JoinColumn(name = "competicao_idCompeticao")
-    private Competicao competicao;
+    
     
     //VER!
-    @ManyToMany(fetch=FetchType.EAGER)
-    private List<Confronto> confrontosModalidadeSolo;
+    //@ManyToMany(fetch=FetchType.EAGER)
+    //private List<Confronto> confrontosModalidadeSolo;
     
         
     @Column(name="aprovado")
@@ -60,8 +59,8 @@ public class Atleta implements Serializable {
         aprovado = false;
         equipes = new ArrayList<>();
         modalidadesSolo = new ArrayList<>();
-        competicao = new Competicao();
-        confrontosModalidadeSolo = new ArrayList<>();
+        //competicao = new Competicao();
+        //confrontosModalidadeSolo = new ArrayList<>();
     }
 
     public Atleta(int idAtleta, String nome, String email, boolean aprovado) {
@@ -71,8 +70,18 @@ public class Atleta implements Serializable {
         this.aprovado = aprovado;
         this.equipes = new ArrayList<>();
         this.modalidadesSolo = new ArrayList<>();
-        this.confrontosModalidadeSolo = new ArrayList<>();
-        this.competicao = new Competicao();
+        //this.confrontosModalidadeSolo = new ArrayList<>();
+        //this.competicao = new Competicao();
+    }
+    public Atleta(int idAtleta, String nome, String email, boolean aprovado, List<ModalidadeSolo> modalidades) {
+        this.idAtleta = idAtleta;
+        this.nome = nome;
+        this.email = email;
+        this.aprovado = aprovado;
+        this.equipes = new ArrayList<>();
+        this.modalidadesSolo = modalidades;
+        //this.confrontosModalidadeSolo = new ArrayList<>();
+        //this.competicao = new Competicao();
     }
     
     public Atleta(int idAtleta, String nome, String email, boolean aprovado, Competicao competicao) {
@@ -82,8 +91,8 @@ public class Atleta implements Serializable {
         this.aprovado = aprovado;
         this.equipes = new ArrayList<>();
         this.modalidadesSolo = new ArrayList<>();
-        this.confrontosModalidadeSolo = new ArrayList<>();
-        this.competicao = competicao;
+        //this.confrontosModalidadeSolo = new ArrayList<>();
+        //this.competicao = competicao;
     }
 
     public Atleta(int idAtleta, String nome, String email, boolean aprovado, List<Equipe> equipes, List<ModalidadeSolo> modalidadesSolo, Competicao competicao, List<Confronto> confrontos) {
@@ -93,8 +102,8 @@ public class Atleta implements Serializable {
         this.equipes = equipes;
         this.aprovado = aprovado;
         this.modalidadesSolo = modalidadesSolo;
-        this.competicao = competicao;
-        this.confrontosModalidadeSolo = confrontos;
+        //this.competicao = competicao;
+        //this.confrontosModalidadeSolo = confrontos;
     }
     
     public void adicionarEquipe(Equipe equipe){
@@ -113,13 +122,13 @@ public class Atleta implements Serializable {
         this.getModalidadesSolo().remove(modalidadeSolo);
     }
     
-    public void adicionarConfrontoSolo(Confronto confronto){
+    /*public void adicionarConfrontoSolo(Confronto confronto){
         this.getConfrontosModalidadeSolo().add(confronto);
     }
     
     public void removerConfrontoSolo(Confronto confronto){
         this.getConfrontosModalidadeSolo().remove(confronto);
-    }
+    }*/
     
 
 
@@ -196,30 +205,30 @@ public class Atleta implements Serializable {
     /**
      * @return the competicao
      */
-    public Competicao getCompeticao() {
+    /*public Competicao getCompeticao() {
         return competicao;
-    }
+    }*/
 
     /**
      * @param competicao the competicao to set
      */
-    public void setCompeticao(Competicao competicao) {
+    /*public void setCompeticao(Competicao competicao) {
         this.competicao = competicao;
-    }
+    }*/
 
     /**
      * @return the confrontosModalidadeSolo
      */
-    public List<Confronto> getConfrontosModalidadeSolo() {
+    /*public List<Confronto> getConfrontosModalidadeSolo() {
         return confrontosModalidadeSolo;
-    }
+    }*/
 
     /**
      * @param confrontosModalidadeSolo the confrontosModalidadeSolo to set
      */
-    public void setConfrontosModalidadeSolo(List<Confronto> confrontosModalidadeSolo) {
+    /*public void setConfrontosModalidadeSolo(List<Confronto> confrontosModalidadeSolo) {
         this.confrontosModalidadeSolo = confrontosModalidadeSolo;
-    }
+    }*/
 
     /**
      * @return the aprovado

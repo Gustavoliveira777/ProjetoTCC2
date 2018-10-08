@@ -25,7 +25,7 @@ public class TesteBuscaTodos {
         /*List<Competicao> competicoes = cptc.buscarTodos(Competicao.class);
         Competicao mlb = competicoes.get(0);
         System.out.println(mlb.getNome()+";"+mlb.getIdCompeticao());*/
-        UsuarioParticipante user = new UsuarioParticipante(0, "oliveiragustavo1340@gmail.com", "Curitiba320");
+        UsuarioParticipante user = new UsuarioParticipante(0,"Gustavo Henrique de Souza Oliveira","oliveiragustavo1340@gmail.com", "Curitiba320");
         cptc.salvar(user);
     }
     

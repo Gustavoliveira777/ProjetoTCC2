@@ -25,4 +25,7 @@ public class UsuarioParticipanteControle {
         
         
     }
+    public void atualizarCad(UsuarioParticipante user){
+        uspd.alterar(user);
+    }
 }

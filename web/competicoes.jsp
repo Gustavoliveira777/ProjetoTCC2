@@ -57,7 +57,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                 <a class="dropdown-item" href="competicoes.jsp">Competições</a>
-                                <a class="dropdown-item" href="atleta.jsp">Atletas</a>
+                                <a class="dropdown-item" href="portfolio-2-col.html">Atletas</a>
                                 <a class="dropdown-item" href="equipes.jsp">Equipes</a>
                                 <a class="dropdown-item" href="local.jsp">Locais</a>
                                 <a class="dropdown-item" href="portfolio-item.html"></a>

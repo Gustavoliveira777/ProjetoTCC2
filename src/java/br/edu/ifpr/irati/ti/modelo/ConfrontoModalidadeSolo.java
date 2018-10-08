@@ -18,7 +18,7 @@ import org.hibernate.annotations.Proxy;
 public class ConfrontoModalidadeSolo extends Confronto implements Serializable {
     
     
-    @ManyToMany(mappedBy = "confrontosModalidadeSolo", fetch=FetchType.EAGER)
+    @ManyToMany//(mappedBy = "confrontosModalidadeSolo", fetch=FetchType.EAGER)
     protected List<Atleta> atletas;
     
     

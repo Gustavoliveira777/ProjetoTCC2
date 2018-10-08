@@ -25,7 +25,7 @@ public class ModalidadeSolo implements Serializable {
     @Column (name = "nome", nullable = false, length = 100)
     private String nome;
     
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(mappedBy = "modalidadesSolo" , fetch=FetchType.EAGER)
     private List<Atleta> atletas;
     
     // FICAR DE OLHO
