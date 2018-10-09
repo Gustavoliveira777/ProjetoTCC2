@@ -57,7 +57,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                 <a class="dropdown-item" href="competicoes.jsp">Competições</a>
-                                <a class="dropdown-item" href="portfolio-2-col.html">Atletas</a>
+                                <a class="dropdown-item" href="atleta.jsp">Atletas</a>
                                 <a class="dropdown-item" href="equipes.jsp">Equipes</a>
                                 <a class="dropdown-item" href="local.jsp">Locais</a>
                                 <a class="dropdown-item" href="portfolio-item.html"></a>
@@ -72,7 +72,7 @@
                                 <a class="dropdown-item" href="editaUsuario.jsp?c=<%=up.getIdUsuario()%>">Editar Perfil</a>
                             </div>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -84,42 +84,101 @@
 
         <!-- Page Content -->
         <div class="container">
-            <h1 class="my-4">Painel de Controle</h1>
+            <%
+                request.setCharacterEncoding("UTF-8");
+            if(request.getParameter("msg") != null){
+                String mensagem = request.getParameter("msg");
+                String cor = request.getParameter("color");
+            %>
+            <div class="alert alert-<%=cor%> alert-dismissible fade show" role="alert">
+                <strong><%=mensagem%></strong> .
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-            <!-- Marketing Icons Section -->
-            <div class="row">
-                <div class="col">
-                    <div class="card h-100">
-                        <h4 class="card-header">Entre</h4>
-                        <div class="card-body">
-                            <form action="scripts/ctrlacesso.jsp" method="POST" class="col">
+            <%
+            }
+            %>
+            <h1 class="my-4">Gerenciar Competições</h1>
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data de Início</th>
+                        <th scope="col">Data de Término</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    CompeticaoControle ctc = new CompeticaoControle();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    for(Competicao comp : ctc.buscarTodosCompeticao()){
+                    %>
+                    <tr>
 
-                                <label for="" class="col-md-12">
-                                    E-mail:
-                                    <input type="email" required class="form-control" name="email" placeholder="Informe seu e-mail">
-                                </label>
-                                <label for="" class="col-md-12">
-                                    Senha:
-                                    <input type="password" required class="form-control" name="senha" placeholder="Insira sua senha">
-                                </label>
+                        <td><%=comp.getNome()%></td>
+                        <td><%=sdf.format(comp.getDataInicio())%></td>
+                        <td><%=sdf.format(comp.getDataTermino())%></td>
+                        <td><a href="editarCompeticao.jsp?id=<%=comp.getIdCompeticao()%>" class="btn btn-success">
+                                <!-- Adicionar icone -->
+                                <i class="fas fa-edit"></i>
+                            </a> &nbsp;
+                            <a href="scripts/editarCompeticao.jsp?id=<%=comp.getIdCompeticao()%>&op=2" class="btn btn-danger">
+                                <!-- Adicionar icone -->
+                                <i class="fas fa-trash-alt"></i>
+                            </a> &nbsp;
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#<%=comp.getIdCompeticao()%>">
+                                <!-- Adicionar icone -->
+                                <i class="fas fa-eye"></i>
+                            </button></td>
+                    </tr>
+                    <%}%>
+                </tbody>
+            </table>
+            <%
+                    
+                for(Local local2 : lc.buscarTodosLocal()){
+            %>
+            <div class="modal fade" id="<%=local2.getIdLocal()%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Detalhes: <%=local2.getNome()%></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <b>Endereço:</b><%=local2.getEndereco()%><br>
+                            <b>Cidade:</b><%=local2.getCidade()%>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
 
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-success">Logar</button>
-
-                        </div>
-                        </form> 
                     </div>
                 </div>
+            </div>        
+            <%}%>
+            <a href="novoLocal.jsp" class="btn btn-success">
+                <!-- Adicionar icone -->
+                <i class="fas fa-plus"></i>&nbsp;Novo Local
+            </a>
+
+        </div>
 
 
-                <!-- Bootstrap core JavaScript -->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<%
-}
-%>
-                </body>
 
-                </html>
+        <!-- Bootstrap core JavaScript -->
+    
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <%
+        }
+        %>
+    </body>
+
+</html>
 

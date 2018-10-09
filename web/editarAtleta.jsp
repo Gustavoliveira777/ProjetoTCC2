@@ -4,9 +4,11 @@
     Created on : 01/10/2018, 09:16:10
     Author     : Usuário
 --%>
-<%@page import="br.edu.ifpr.irati.ti.modelo.ModalidadeColetiva"%>
+
+
+<%@page import="br.edu.ifpr.irati.ti.modelo.ModalidadeSolo"%>
 <%@page import="br.edu.ifpr.irati.ti.modelo.UsuarioParticipante"%>
-<%@page import="br.edu.ifpr.irati.ti.controle.ModalidadeColetivaControle"%>
+<%@page import="br.edu.ifpr.irati.ti.controle.ModalidadeSoloControle"%>
 <%@page import="br.edu.ifpr.irati.ti.modelo.Atleta"%>
 <%@page import="br.edu.ifpr.irati.ti.controle.AtletaControle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -87,47 +89,62 @@
 
         <!-- Page Content -->
         <div class="container">
-            <h1 class="my-4">Criar uma nova equipe</h1>
+            <h1 class="my-4">Editar equipe</h1>
+            <%
+                AtletaControle atc = new AtletaControle();
+                int id = Integer.parseInt(request.getParameter("id"));
+                Atleta atl = atc.buscarPorId(id);
+            %>
 
-
-            <form action="scripts/editarEquipe.jsp" method="POST" class="col">
-                <input type="hidden" name="op" value="3">
-                <input type="hidden" name="id" value="0">
+            <form action="scripts/editarAtleta.jsp" method="POST" class="col">
+                <input type="hidden" name="op" value="1">
+                <input type="hidden" name="id" value="<%=atl.getIdAtleta()%>">
 
                 <label for="" class="col-md-12">
                     Nome:
-                    <input type="text" required class="form-control" name="nome" placeholder="Informe o nome da Equipe" >
+                    <input type="text" required class="form-control" name="nome" placeholder="Informe o nome do Atleta" value="<%=atl.getNome()%>">
                 </label>
                 <label for="" class="col-md-12">
-                    Modalidade:
-                    <select name="modalidade" class="form-control" >
-                        <option value="">Selecione</option>
-
-                        <%
-                            ModalidadeColetivaControle mcc = new ModalidadeColetivaControle();
-                            for(ModalidadeColetiva mc : mcc.buscarTodosModalidadeColetiva()){
-                        %>
-                        <option value="<%=mc.getIdModColetiva()%>"><%=mc.getNome()%></option>
-                        <%}%>
-                    </select>
+                    Email:
+                    <input type="email" required class="form-control" name="email" placeholder="Informe o Email" value="<%=atl.getEmail()%>">
                 </label>
+                
                 <label for="" class="col-md-12">
-                    Atletas disponíveis:
+                    Modalidades disponíveis(Campo não obrigatório):
                     <div class="form-check">
                         <%
-                        AtletaControle atc = new AtletaControle();
+                        ModalidadeSoloControle msc = new ModalidadeSoloControle();
                         int i = 0;
-                        for(Atleta atl : atc.buscarTodosAtleta()){
+                        
+                        for(ModalidadeSolo ms : msc.buscarTodosModalidadeSolo()){
+                            
+                        if(atl.getModalidadesSolo().size() > 0){
+                        if(i < atl.getModalidadesSolo().size()){
+                        if(ms.getNome().equals(atl.getModalidadesSolo().get(i).getNome())){
+                            
                         %>
-   
-                        <input class="form-check-input" type="checkbox" value="<%=atl.getIdAtleta()%>" name="<%=i%>">
+
+                        <input class="form-check-input" type="checkbox" value="<%=ms.getIdModalidadeSolo()%>" name="<%=i%>" checked="checked">
                         <label class="form-check-label" for="defaultCheck1">
-                            <%=atl.getNome()%>
+                            <%=ms.getNome()%>
                         </label><br>
-                        <% i++;}%>
+                        <%}}else{%>
+                        <input class="form-check-input" type="checkbox" value="<%=ms.getIdModalidadeSolo()%>" name="<%=i%>">
+                        <label class="form-check-label" for="defaultCheck1">
+                            <%=ms.getNome()%>
+                        </label><br>
+                        <% }}else{
+                        %>
+                        <input class="form-check-input" type="checkbox" value="<%=ms.getIdModalidadeSolo()%>" name="<%=i%>">
+                        <label class="form-check-label" for="defaultCheck1">
+                            <%=ms.getNome()%>
+                        </label><br>
+                        <%
+                        
+                        }i++;}%>
                     </div>
                 </label>
-                    <input type="hidden" name="size" value="<%=atc.buscarTodosAtleta().size()%>">
+                <input type="hidden" name="size" value="<%=msc.buscarTodosModalidadeSolo().size()%>">
 
                 <button type="submit" class="btn btn-success">Salvar</button>
 

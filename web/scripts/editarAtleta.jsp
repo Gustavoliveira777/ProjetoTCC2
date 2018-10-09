@@ -53,26 +53,25 @@
         
     }else if(op == 1){
                 int id = Integer.parseInt(request.getParameter("id"));
-     String    nome = request.getParameter("nome");
-    int tamanhoAtletas = Integer.parseInt(request.getParameter("size"));
-         List<Atleta> atletas = new ArrayList<>();
-    AtletaControle atc = new AtletaControle();
-   // ModalidadeColetivaControle mcc = new ModalidadeColetivaControle();
-    //ModalidadeColetiva mc = mcc.buscaPorId(idModalidade);
-    if(tamanhoAtletas > 0){
-    for(int i=0;i<tamanhoAtletas;i++){
+     String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+    int tamanhoModalidades = Integer.parseInt(request.getParameter("size"));
+         List<ModalidadeSolo> modalidades = new ArrayList<>();
+    ModalidadeSoloControle atc = new ModalidadeSoloControle();
+    if(tamanhoModalidades > 0){
+    for(int i=0;i<tamanhoModalidades;i++){
         if(request.getParameter(""+i) != null){
-      //      atletas.add(atc.buscarPorId(Integer.parseInt(request.getParameter(""+i))));
+            modalidades.add(atc.buscaPorId(Integer.parseInt(request.getParameter(""+i))));
         }
     }
-        //Equipe eqp = new Equipe(id,nome,atletas,mc,false);
-        //eqpc.alterarEquipe(eqp);
-        response.sendRedirect("../equipes.jsp?msg=Equipe alterada com sucesso&color=success");
+        Atleta eqp = new Atleta(id,nome,email,false,modalidades);
+        eqpc.alterarAtleta(eqp);
+        response.sendRedirect("../atleta.jsp?msg=Atleta alterado com sucesso&color=success");
     }else{
         //out.println(mc.getNome());
-        //Equipe eq = new Equipe(id,nome,mcc.buscaPorId(idModalidade),false);
-        //eqpc.alterarEquipe(eq);
-        response.sendRedirect("../equipes.jsp?msg=Equipe alterada com sucesso&color=success");
+        Atleta eq = new Atleta(id,nome,email,false);
+        eqpc.alterarAtleta(eq);
+        response.sendRedirect("../atleta.jsp?msg=Atleta alterado com sucesso&color=success");
 
     }
     }
