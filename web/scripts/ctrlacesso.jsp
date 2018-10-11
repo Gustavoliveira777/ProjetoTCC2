@@ -22,6 +22,7 @@
     }
     if(request.getParameter("c") != null){
     int codigo = Integer.parseInt(request.getParameter("c"));
+    
     if(codigo == 1 ){
         session.setAttribute("usuario",null);
         //response.sendRedirect("../login.jsp?e=Sessão Finalizada com Sucesso");

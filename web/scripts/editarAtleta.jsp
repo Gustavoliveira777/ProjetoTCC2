@@ -18,10 +18,9 @@
     request.setCharacterEncoding("UTF-8");
     int op = Integer.parseInt(request.getParameter("op"));
     AtletaControle eqpc = new AtletaControle();
-        
+    
     if(op == 3){
-   
-
+        
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
     int tamanhoModalidades = Integer.parseInt(request.getParameter("size"));

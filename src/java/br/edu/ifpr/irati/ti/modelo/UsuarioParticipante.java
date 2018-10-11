@@ -14,7 +14,7 @@ import org.hibernate.annotations.Proxy;
 
 @Entity(name="usuarioparticipante")
 @Proxy(lazy = false)
-public class UsuarioParticipante implements Serializable{
+public class UsuarioParticipante implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
