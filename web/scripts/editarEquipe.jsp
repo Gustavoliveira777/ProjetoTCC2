@@ -18,7 +18,6 @@
     EquipeControle eqpc = new EquipeControle();
         
     if(op == 3){
-   
 
         String nome = request.getParameter("nome");
     int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
@@ -75,5 +74,7 @@
 
     }
     }
+    
+    
     
 %>
